@@ -8,10 +8,13 @@ import (
 func main() {
 	fmt.Println("Hello, World!")
 	data, _ := os.ReadFile("words.txt")
-	_ = data
-	wordCount := 0
+	countWords(data)
 	const spaceChar = 32
 
+}
+
+func countWords(data []byte) int {
+	wordCount := 0
 	for _, x := range data {
 		if x == ' ' {
 			wordCount++
@@ -20,4 +23,5 @@ func main() {
 	}
 	wordCount++
 	fmt.Println(wordCount)
+	return wordCount
 }
