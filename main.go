@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 )
@@ -8,25 +9,12 @@ import (
 func main() {
 	fmt.Println("Hello, World!")
 	data, _ := os.ReadFile("words.txt")
-	countWords(data)
+	CountWords(data)
 	const spaceChar = 32
 
 }
 
-func countWords(data []byte) int {
-	if len(data) == 0 {
-		return 0
-	}
-	wordCount := 0
-	for _, x := range data {
-		if x == ' ' {
-			wordCount++
-		}
-
-	}
-	if (len(data)) > 0 {
-		wordCount++
-	}
-
-	return wordCount
+func CountWords(data []byte) int {
+	words := bytes.Fields(data)
+	return len(words)
 }
